@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Melodia - Hi-Fi Audio</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration (extracted to script.js) -->
+<script src="script.js"></script>
+<!-- Custom styles (extracted to style.css) -->
+<link href="style.css" rel="stylesheet"/>
+</head>
+<body class="h-screen w-full flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar: Desktop Only -->
+<nav class="hidden md:flex justify-between items-center px-margin-desktop w-full h-16 bg-surface-navy-bright/60 backdrop-blur-3xl sticky top-0 z-40">
+<!-- Logo Area (Placeholder for alignment, actual logo in SideNav) -->
+<div class="w-64"></div>
+<!-- Search Bar -->
+<div class="flex-1 max-w-md mx-auto">
+<div class="relative flex items-center w-full h-10 aero-glass rounded-full px-4 focus-within:border-primary-fixed focus-within:lume-active transition-all duration-300">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] mr-2">search</span>
+<input id="searchInput" class="w-full bg-transparent border-none text-body-sm font-body-sm text-primary placeholder-on-surface-variant/70 focus:ring-0" placeholder="Search tracks, artists, albums..." type="text"/>
+</div>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:scale-95">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:scale-95">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-glass-stroke ml-2">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="A futuristic avatar portrait. High-end sci-fi aesthetic, subtle cyan lighting, polished glass helmet or visor reflecting neon lights. Dark moody background, sharp focus, professional digital art style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4Ckf3NXkk7-tsSwqDoFL2eYVHPekoVIhCToaU5XV3jDusKzuLcBAmCm-_CTW9lI3rpFi1w_kDniukOT0XitV1U2hA2kKS0OdNy7s-OrHvwSkws2QJggjXgLZ92-VNlrTlzh3-J5cnxFmFQ3uLUqa8jFjA6zXiVEzAOqSorXsdoCKaaC8H1_hWGNezQKvHn2l1T0_oy1LbQTpWohk0ujcn2YSkGq2h0f1_VP7hFG4unFpFl9zAUlE-lw"/>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar: Desktop Only -->
+<aside class="hidden md:flex flex-col h-full py-8 w-64 bg-surface-container-low/40 backdrop-blur-2xl border-r border-glass-stroke shrink-0 z-30 relative">
+<!-- Brand -->
+<div class="px-8 mb-10">
+<h1 class="font-headline-md text-headline-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-fixed" style="font-variation-settings: 'FILL' 1;">graphic_eq</span>
+                    AeroStream
+                </h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-1 ml-8">Hi-Fi Audio</p>
+</div>
+<!-- Main Nav Links -->
+<nav class="flex-1 flex flex-col gap-2 px-4">
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg bg-primary-container/20 text-primary border-l-4 border-primary-fixed shadow-[0_0_15px_rgba(0,242,255,0.2)] transition-all duration-300 ease-in-out cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-caps text-label-caps">Home</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/30 hover:text-primary transition-all duration-300 ease-in-out cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-caps text-label-caps">Explore</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/30 hover:text-primary transition-all duration-300 ease-in-out cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">library_music</span>
+<span class="font-label-caps text-label-caps">Library</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/30 hover:text-primary transition-all duration-300 ease-in-out cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">queue_music</span>
+<span class="font-label-caps text-label-caps">Playlists</span>
+</a>
+</nav>
+<!-- Footer Nav Links -->
+<div class="px-4 mt-auto">
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/30 hover:text-primary transition-all duration-300 ease-in-out cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/30 hover:text-primary transition-all duration-300 ease-in-out cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-caps text-label-caps">Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 flex flex-col md:flex-row relative h-[calc(100vh-64px-96px)] md:h-full p-margin-mobile md:p-margin-desktop overflow-y-auto pb-32 md:pb-24">
+<!-- Player Zone (Left/Center) -->
+<div class="flex-1 flex flex-col justify-center max-w-2xl">
+<!-- Track Info -->
+<div class="mb-8">
+<h2 id="trackTitle" class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary tracking-tight mb-2 drop-shadow-[0_0_10px_rgba(0,242,255,0.4)]">
+                        Magnetic Storm
+                    </h2>
+<p id="artistName" class="font-headline-md text-headline-md text-on-surface-variant">Aero-Dynamics</p>
+</div>
+<!-- Glass Tracklist / Queue (Contextual) -->
+<div class="aero-glass-panel rounded-xl p-4 mt-8 flex-1 max-h-64 overflow-y-auto">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-4 px-2">Up Next</h3>
+<ul class="flex flex-col gap-1">
+<li class="flex items-center gap-4 p-2 rounded-md hover:bg-surface-variant/30 cursor-pointer group">
+<span class="font-mono-label text-mono-label text-on-surface-variant/50 w-4 text-right">01</span>
+<div class="w-10 h-10 rounded bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Abstract geometric album art. Dark navy background with sharp, glowing cyan vectors intersecting. Tech-noir style, clean minimal aesthetic, polished digital render." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHeL-4QZML9BAhljt5vvEGmSMhf_zn7ZGlx2dGCb9rS9Fg-Ja-mjKa6rTOKnxYwOJw9Xbk9bN_K-ujYDxqdsGB6hz2jIthpver3fPOl88wh3-Pfb_v23U4ABoqPvzjrYglgDAHuUCZHrj1BY8Bev_8SRLzndTfnKflkzdM_YgsEfaqh_mzFsuR4A8mZ0rezFJGCmB5ATo3niNoZ3HL0CmMMoEQnQnpt73xgwldXLhCfnuCAoJnD6GItg"/>
+</div>
+<div class="flex-1">
+<p class="font-body-sm text-body-sm text-on-surface group-hover:text-primary transition-colors">Neon Velocity</p>
+<p id="bottomArtistName" class="font-mono-label text-mono-label text-on-surface-variant">Aero-Dynamics</p>
+</div>
+<span class="font-mono-label text-mono-label text-on-surface-variant mr-2">4:12</span>
+</li>
+<li class="flex items-center gap-4 p-2 rounded-md hover:bg-surface-variant/30 cursor-pointer group">
+<span class="font-mono-label text-mono-label text-on-surface-variant/50 w-4 text-right">02</span>
+<div class="w-10 h-10 rounded bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Album cover art. Deep space nebula in shades of dark blue and bright cyan. High contrast, cosmic aesthetic, polished digital painting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDORecDougKgPWANBeMIBLONQG1Bnv-trX19PDdL7j3vdAsiwbn0nkAix2auhn1hGIJuNKkmQmEyg5SA14wslUA3w3MGq_oRhEaQB-Ku9lLShHo_IEWwUzDpcvoF1LDYG4xMSIGySiR5Pg9l5SNRsF-QWSCFU5m8rgS8TAdpSHjKP17Q7eW9RQoLIO-sHRU715XAp57aL2DJecF8K8BMsQbZE-XLcVHrYR6HbJjmq9ZcRNEz0GalnQcLQ"/>
+</div>
+<div class="flex-1">
+<p class="font-body-sm text-body-sm text-on-surface group-hover:text-primary transition-colors">Quantum Leap</p>
+<p class="font-mono-label text-mono-label text-on-surface-variant">Synthwave Syndicate</p>
+</div>
+<span class="font-mono-label text-mono-label text-on-surface-variant mr-2">3:45</span>
+</li>
+<li class="flex items-center gap-4 p-2 rounded-md hover:bg-surface-variant/30 cursor-pointer group">
+<span class="font-mono-label text-mono-label text-on-surface-variant/50 w-4 text-right">03</span>
+<div class="w-10 h-10 rounded bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Album artwork featuring a stylized glowing circuit board pattern on black glass. Cyan and deep blue accents. High-tech, futuristic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKabGZ16gTEFN4qZmDJkMzqIUGZeh6Wx1WPTsFR-E-SxQIrn96y8uRNvVgWJQKqc979KaXcfgq8VbwtBTnTBgNqIna65pkOOKZ77o-q_MxmkSkSSisdYcOLneKoUCRz_MKf0Ch75-olPf8PzKDzFI9pt2tEL6TMrSEbYwu9q1eWzKBQaX6EVn_TH-cNu4GE_4lvkzRQoxp-IgjseBexhj2NFRTqX8_VZOK7tCThkQVGFCCr9vhATzJ_A"/>
+</div>
+<div class="flex-1">
+<p class="font-body-sm text-body-sm text-on-surface group-hover:text-primary transition-colors">Pulse Origin</p>
+<p class="font-mono-label text-mono-label text-on-surface-variant">Aero-Dynamics</p>
+</div>
+<span class="font-mono-label text-mono-label text-on-surface-variant mr-2">5:20</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Visualizer Panel (Right) -->
+<div class="md:ml-margin-desktop w-full md:w-96 shrink-0 mt-8 md:mt-0 flex flex-col justify-center">
+<div class="aero-glass-panel rounded-xl overflow-hidden aspect-square relative shadow-[0_10px_40px_rgba(0,0,0,0.6)]">
+<!-- Glass glare effect overlay -->
+<div class="absolute inset-0 pointer-events-none z-10 rounded-xl" style="background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 40%);"></div>
+<!-- Ferromagnetic Visualizer (from supplied source) -->
+<canvas class="w-full h-full absolute inset-0 z-0" id="shader-canvas" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas');
+
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+varying vec2 v_texCoord;
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+
+float hash(vec2 p) {
+    p = fract(p * vec2(123.34, 456.21));
+    p += dot(p, p + 45.32);
+    return fract(p.x * p.y);
+}
+
+float noise(vec2 p) {
+    vec2 i = floor(p);
+    vec2 f = fract(p);
+    f = f * f * (3.0 - 2.0 * f);
+    float a = hash(i);
+    float b = hash(i + vec2(1.0, 0.0));
+    float c = hash(i + vec2(0.0, 1.0));
+    float d = hash(i + vec2(1.0, 1.0));
+    return mix(mix(a, b, f.x), mix(c, d, f.x), f.y);
+}
+
+float fbm(vec2 p) {
+    float v = 0.0;
+    float a = 0.5;
+    for (int i = 0; i < 5; i++) {
+        v += a * noise(p);
+        p *= 2.0;
+        a *= 0.5;
+    }
+    return v;
+}
+
+void main() {
+    vec2 uv = v_texCoord;
+    vec2 p = (uv - 0.5) * 2.0;
+    p.x *= u_resolution.x / u_resolution.y;
+
+    vec2 mouse = (u_mouse / u_resolution - 0.5) * 2.0;
+    mouse.x *= u_resolution.x / u_resolution.y;
+    
+    float mouseDist = length(p - mouse);
+    float mouseInfluence = smoothstep(0.8, 0.0, mouseDist);
+
+    float dist = length(p);
+    float pulse = sin(u_time * 1.5) * 0.1 + 1.0;
+    
+    float angle = atan(p.y, p.x);
+    float spikes = fbm(vec2(angle * 4.0, dist * 2.5 - u_time * 2.0));
+    float mouseSpikes = fbm(vec2(atan(p.y - mouse.y, p.x - mouse.x) * 6.0, mouseDist * 4.0)) * mouseInfluence;
+    
+    float blob = smoothstep(0.5 * pulse, 0.48 * pulse, dist - spikes * 0.2 - mouseSpikes * 0.3);
+    
+    float lines = sin(dist * 15.0 - u_time * 3.0 + fbm(p * 4.0) * 3.0);
+    lines = smoothstep(0.0, 0.1, abs(lines)) * (0.15 + mouseInfluence * 0.2);
+    
+    vec3 backColor = vec3(0.02, 0.04, 0.08);
+    vec3 fluidColor = vec3(0.05, 0.05, 0.07);
+    vec3 accentColor = vec3(0.0, 0.6, 1.0);
+    
+    vec3 color = mix(backColor, accentColor * 0.3, lines);
+    color += accentColor * 0.2 * mouseInfluence;
+    color = mix(color, fluidColor + accentColor * 0.2, blob);
+    
+    float spec = pow(max(0.0, 1.0 - length(p - vec2(0.15, 0.15))), 40.0) * blob;
+    color += spec * 0.5;
+
+    gl_FragColor = vec4(color, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+<!-- Decorative corner accents -->
+<div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-primary-fixed/50 z-20 m-2"></div>
+<div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-primary-fixed/50 z-20 m-2"></div>
+<div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-primary-fixed/50 z-20 m-2"></div>
+<div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-primary-fixed/50 z-20 m-2"></div>
+</div>
+<!-- Eq Controls -->
+<div class="mt-6 aero-glass rounded-lg p-4 flex justify-between items-end h-24 px-6">
+<div class="w-2 bg-surface-variant rounded-full h-full relative overflow-hidden group cursor-ns-resize"><div class="absolute bottom-0 w-full bg-primary-fixed h-[40%] group-hover:h-[60%] transition-all duration-300"></div></div>
+<div class="w-2 bg-surface-variant rounded-full h-full relative overflow-hidden group cursor-ns-resize"><div class="absolute bottom-0 w-full bg-primary-fixed h-[70%] group-hover:h-[80%] transition-all duration-300"></div></div>
+<div class="w-2 bg-surface-variant rounded-full h-full relative overflow-hidden group cursor-ns-resize"><div class="absolute bottom-0 w-full bg-primary-fixed h-[55%] group-hover:h-[45%] transition-all duration-300"></div></div>
+<div class="w-2 bg-surface-variant rounded-full h-full relative overflow-hidden group cursor-ns-resize"><div class="absolute bottom-0 w-full bg-primary-fixed h-[90%] group-hover:h-[100%] transition-all duration-300"></div></div>
+<div class="w-2 bg-surface-variant rounded-full h-full relative overflow-hidden group cursor-ns-resize"><div class="absolute bottom-0 w-full bg-primary-fixed h-[30%] group-hover:h-[50%] transition-all duration-300"></div></div>
+<div class="w-2 bg-surface-variant rounded-full h-full relative overflow-hidden group cursor-ns-resize"><div class="absolute bottom-0 w-full bg-primary-fixed h-[65%] group-hover:h-[75%] transition-all duration-300"></div></div>
+<div class="w-2 bg-surface-variant rounded-full h-full relative overflow-hidden group cursor-ns-resize"><div class="absolute bottom-0 w-full bg-primary-fixed h-[80%] group-hover:h-[60%] transition-all duration-300"></div></div>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar: Playback Controls -->
+<div class="fixed bottom-0 w-full z-50 flex items-center justify-between px-margin-mobile md:px-margin-desktop bg-surface-container-high/80 backdrop-blur-3xl h-24 shadow-[0_-10px_30px_rgba(0,0,0,0.5)] border-t-0 border-glass-stroke">
+<!-- Left: Now Playing Meta -->
+<div class="flex items-center gap-4 w-1/4 min-w-[200px] hidden md:flex">
+<div class="w-14 h-14 rounded-md overflow-hidden shadow-lg border border-glass-stroke">
+<img id="nowPlayingCover" class="w-full h-full object-cover" data-alt="Album art showing an abstract representation of magnetic waves. Sleek dark navy and cyan colors. High resolution, glass-like finish, modern hi-fi aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMi-vpGiTInyjXkvzGYsUVqh8T4DzSx-yWcatGx1lA1zEeDOTF6-vE6j2vpkcFfFZLJZ8GiFs9-Icakr0DVHpyOv1P1zGKuzIyRA7M6NZ5JYQx8Qeput8x4HOqMT4HAw2-rcBw3sw-Wy5R7S-ccMOpVm6n_s4ThIxB4NQLL4dxItWgqJ094XcooUCkioVeXGVsII7nvGZfVr19uVO4Gq2OeZmppHdjmq_RtVZZLrsBfU6_39KbzIXjow"/>
+</div>
+<div>
+<h4 id="bottomTrackTitle" class="font-body-sm text-body-sm text-primary font-semibold">Magnetic Storm</h4>
+<p id="bottomArtistName" class="font-mono-label text-mono-label text-on-surface-variant">Aero-Dynamics</p>
+</div>
+<button class="ml-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">favorite_border</span>
+</button>
+</div>
+<!-- Center: Controls & Progress -->
+<div class="flex-1 max-w-2xl flex flex-col items-center justify-center gap-2">
+<!-- Action Buttons -->
+<div class="flex items-center gap-6">
+<button aria-label="Shuffle" class="text-on-surface-variant hover:text-primary-fixed-dim transition-colors active:scale-90">
+<span class="material-symbols-outlined text-[20px]" data-icon="shuffle">shuffle</span>
+</button>
+<button aria-label="Previous" class="text-on-surface-variant hover:text-primary-fixed-dim transition-colors active:scale-90">
+<span class="material-symbols-outlined text-[28px]" data-icon="skip_previous" style="font-variation-settings: 'FILL' 1;">skip_previous</span>
+</button>
+<!-- Play/Pause Primary -->
+<button id="playButton" type="button" aria-label="Play" class="w-14 h-14 rounded-full flex items-center justify-center bg-transparent border-2 border-primary-fixed text-primary hover:bg-primary-fixed/20 transition-all duration-300 lume-active active:scale-90">
+<span id="playIcon" class="material-symbols-outlined text-[36px]" data-icon="play_circle" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+<button aria-label="Next" class="text-on-surface-variant hover:text-primary-fixed-dim transition-colors active:scale-90">
+<span class="material-symbols-outlined text-[28px]" data-icon="skip_next" style="font-variation-settings: 'FILL' 1;">skip_next</span>
+</button>
+<button aria-label="Repeat" class="text-on-surface-variant hover:text-primary-fixed-dim transition-colors active:scale-90">
+<span class="material-symbols-outlined text-[20px]" data-icon="repeat">repeat</span>
+</button>
+</div>
+<!-- Progress Bar -->
+<div class="w-full flex items-center gap-3">
+<span id="currentTime" class="font-mono-label text-mono-label text-on-surface-variant w-8 text-right">0:00</span>
+<div id="progressBar" class="flex-1 h-1.5 rounded-full bg-surface-container-highest border border-glass-stroke relative cursor-pointer group">
+<!-- Played track -->
+<div id="progressPlayed" class="absolute top-0 left-0 h-full rounded-full progress-played w-0"></div>
+<!-- Handle -->
+<div id="progressHandle" class="absolute top-1/2 -translate-y-1/2 left-0 w-3 h-3 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.8)] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<span id="duration" class="font-mono-label text-mono-label text-on-surface-variant w-8">0:30</span>
+</div>
+</div>
+<!-- Right: Volume & Extra Controls -->
+<div class="w-1/4 min-w-[200px] flex items-center justify-end gap-4 hidden md:flex">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">lyrics</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">devices</span>
+</button>
+<div id="volumeControl" class="flex items-center gap-2 w-32 group cursor-pointer">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant group-hover:text-primary transition-colors">volume_up</span>
+<div class="flex-1 h-1 rounded-full bg-surface-container-highest border border-glass-stroke relative">
+<div id="volumePlayed" class="absolute top-0 left-0 h-full rounded-full progress-played w-[75%]"></div>
+<div class="absolute top-1/2 -translate-y-1/2 left-[75%] w-2 h-2 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="playerStatus" class="fixed left-1/2 -translate-x-1/2 bottom-28 z-[60] px-4 py-2 rounded-full aero-glass text-xs text-on-surface-variant opacity-0 pointer-events-none transition-opacity duration-300"></div>
+<audio id="audioPlayer" preload="metadata"></audio>
+</body>
+</html>

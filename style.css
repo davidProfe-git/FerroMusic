@@ -1,0 +1,73 @@
+/* Base Aero Glass Utility */
+.aero-glass {
+    background-color: rgba(10, 15, 26, 0.25);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+    border-right-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.aero-glass-panel {
+     background: linear-gradient(135deg, rgba(22, 30, 46, 0.6) 0%, rgba(10, 15, 26, 0.8) 100%);
+     backdrop-filter: blur(40px);
+     border-top: 1.5px solid rgba(255, 255, 255, 0.2);
+     border-left: 1.5px solid rgba(255, 255, 255, 0.1);
+     border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+     border-right: 1px solid rgba(0, 0, 0, 0.5);
+     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.lume-active {
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+}
+
+.progress-played {
+    background: linear-gradient(90deg, rgba(0,242,255,1) 0%, rgba(116,245,255,1) 100%);
+    box-shadow: 0 0 10px rgba(0,242,255,0.6);
+}
+
+/* Ambient Background */
+body {
+    background-color: #0A0F1A;
+    background-image:
+        radial-gradient(circle at 15% 50%, rgba(0, 242, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 85% 30%, rgba(0, 242, 255, 0.08) 0%, transparent 50%);
+    background-attachment: fixed;
+    color: #dee2f2;
+    overflow: hidden; /* Prevent scrolling on desktop app layout */
+}
+
+/* Custom Scrollbar for inner lists */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(10, 15, 26, 0.5);
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 242, 255, 0.2);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 242, 255, 0.4);
+}
+
+/* Deezer test player */
+#audioPlayer {
+    display: none;
+}
+
+#progressBar,
+#volumeControl {
+    user-select: none;
+}
+
+#searchInput {
+    outline: none;
+}
+
+#searchInput:focus {
+    box-shadow: 0 0 0 1px rgba(0, 242, 255, 0.45);
+}
