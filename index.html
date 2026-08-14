@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AETHER - Now Playing</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Tailwind configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#b1fbff",
+                        "primary-container": "#99eef3",
+                        "on-background": "#c3edf5",
+                        background: "#001114",
+                        surface: "#001114",
+                        "surface-container": "#001d22",
+                        "surface-container-high": "#002429",
+                        "surface-container-highest": "#002a31",
+                        "surface-container-low": "#00161a",
+                        "surface-container-lowest": "#000000",
+                        "on-surface": "#c3edf5",
+                        "on-surface-variant": "#8ab2ba",
+                        secondary: "#c2c1ff",
+                        "secondary-container": "#191471",
+                        tertiary: "#ffeaa3",
+                        error: "#ff716c"
+                    },
+
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+
+                    spacing: {
+                        unit: "8px",
+                        gutter: "16px",
+                        "container-padding-mobile": "20px",
+                        "container-padding-desktop": "48px",
+                        "element-gap": "12px"
+                    },
+
+                    fontFamily: {
+                        body: ["Inter"],
+                        display: ["Inter"],
+                        headline: ["Inter"],
+                        label: ["Geist"],
+                        mono: ["Geist"]
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- CSS propio -->
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body class="bg-[#0A0A0B] text-on-background min-h-screen font-body relative overflow-hidden flex flex-col items-center">
+
+    <!-- Animation Layer -->
+    <div
+        class="absolute inset-0 w-full h-[530px] md:h-[618px] z-10 flex justify-center items-center pointer-events-none"
+    >
+        <div class="w-full h-full">
+            <div
+                id="threejs-container"
+                class="w-full h-full"
+            ></div>
+
+            <!-- Overlay -->
+            <div
+                class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0A0A0B] to-transparent z-10"
+            ></div>
+        </div>
+    </div>
+
+
+    <!-- Top App Bar -->
+    <header
+        class="fixed top-0 w-full z-50 bg-background/10 backdrop-blur-md flex justify-between items-center px-gutter py-unit"
+    >
+        <button class="text-primary hover:opacity-80 transition-opacity active:scale-95 duration-200">
+            <span
+                class="material-symbols-outlined"
+                style="font-variation-settings: 'FILL' 1;"
+            >
+                settings
+            </span>
+        </button>
+
+        <h1
+            class="font-display text-3xl md:text-5xl tracking-tighter text-primary"
+        >
+            AETHER
+        </h1>
+
+        <button class="text-primary hover:opacity-80 transition-opacity active:scale-95 duration-200">
+            <span class="material-symbols-outlined">
+                account_circle
+            </span>
+        </button>
+    </header>
+
+
+    <!-- Main Content -->
+    <main
+        class="w-full max-w-xl px-container-padding-mobile md:px-container-padding-desktop flex-1 flex flex-col justify-end pb-32 md:pb-48 relative z-30 pointer-events-none"
+    >
+
+        <div
+            class="bg-[#474649]/70 backdrop-blur-[20px] rounded-xl p-6 border-t border-l border-white/10 shadow-[0_0_30px_rgba(0,245,255,0.05)] pointer-events-auto flex flex-col gap-6 w-full"
+        >
+
+            <!-- Metadata -->
+            <div class="flex flex-col items-center text-center gap-1">
+
+                <span
+                    class="font-label text-xs text-primary-container uppercase tracking-widest border border-primary-container/30 px-2 py-0.5 rounded-sm mb-2 inline-block"
+                >
+                    Hi-Res Audio
+                </span>
+
+                <h2 class="text-2xl text-primary tracking-wide">
+                    AETHER
+                </h2>
+
+                <p class="text-base text-on-surface-variant">
+                    OBSIDIAN SONIC
+                </p>
+
+            </div>
+
+
+            <!-- Progress Bar -->
+            <div class="w-full flex flex-col gap-2">
+
+                <div
+                    class="h-1 w-full bg-[#474649] rounded-full overflow-hidden relative cursor-pointer"
+                >
+                    <div
+                        id="progress-bar"
+                        class="h-full bg-primary-container absolute left-0 top-0"
+                    ></div>
+
+                    <div
+                        id="progress-thumb"
+                        class="h-3 w-3 bg-primary-container rounded-full absolute top-1/2 -translate-y-1/2 shadow-[0_0_15px_#00f5ff]"
+                    ></div>
+                </div>
+
+                <div class="flex justify-between w-full px-1">
+
+                    <span class="font-mono text-[10px] text-on-surface-variant">
+                        01:24
+                    </span>
+
+                    <span class="font-mono text-[10px] text-on-surface-variant">
+                        -03:42
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Controls -->
+            <div class="flex justify-center items-center gap-8 md:gap-12 w-full">
+
+                <button class="player-control text-primary-container">
+                    <span class="material-symbols-outlined">
+                        shuffle
+                    </span>
+                </button>
+
+                <button class="player-control text-primary-container">
+                    <span class="material-symbols-outlined">
+                        skip_previous
+                    </span>
+                </button>
+
+                <button
+                    id="play-button"
+                    class="w-16 h-16 md:w-20 md:h-20 bg-primary-container rounded-full flex justify-center items-center shadow-[0_0_20px_#00f5ff] hover:shadow-[0_0_30px_#00f5ff] transition-shadow active:scale-95 duration-200"
+                >
+                    <span
+                        id="play-icon"
+                        class="material-symbols-outlined text-[#0A0A0B] text-[36px] md:text-[48px]"
+                        style="font-variation-settings: 'FILL' 1;"
+                    >
+                        play_arrow
+                    </span>
+                </button>
+
+                <button class="player-control text-primary-container">
+                    <span class="material-symbols-outlined">
+                        skip_next
+                    </span>
+                </button>
+
+                <button class="player-control text-primary-container opacity-50">
+                    <span class="material-symbols-outlined">
+                        repeat
+                    </span>
+                </button>
+
+            </div>
+
+
+            <!-- Sensitivity -->
+            <div
+                class="flex items-center gap-3 w-full mt-2 opacity-70 hover:opacity-100 transition-opacity"
+            >
+
+                <span class="material-symbols-outlined text-on-surface-variant text-[16px]">
+                    waves
+                </span>
+
+                <div class="h-[2px] flex-1 bg-[#353436] rounded-full relative">
+
+                    <div
+                        class="h-full w-[70%] bg-on-surface-variant absolute left-0 top-0"
+                    ></div>
+
+                    <div
+                        class="h-2 w-2 bg-on-surface-variant rounded-full absolute top-1/2 -translate-y-1/2"
+                        style="left: 70%;"
+                    ></div>
+
+                </div>
+
+                <span class="font-label text-[10px] text-on-surface-variant w-12 text-right">
+                    FLUID
+                </span>
+
+            </div>
+
+        </div>
+    </main>
+
+
+    <!-- Mobile Navigation -->
+    <nav
+        class="fixed bottom-0 left-0 right-0 mb-8 mx-auto w-fit rounded-full px-6 py-3 bg-surface-container/70 backdrop-blur-xl border-t border-l border-white/10 shadow-[0_0_20px_rgba(0,245,255,0.2)] z-50 flex justify-center items-center gap-8 md:hidden"
+    >
+
+        <button class="nav-button">
+            <span class="material-symbols-outlined">
+                home
+            </span>
+
+            <span>Home</span>
+        </button>
+
+        <button class="nav-button">
+            <span class="material-symbols-outlined">
+                search
+            </span>
+
+            <span>Search</span>
+        </button>
+
+        <button class="nav-button active">
+            <span
+                class="material-symbols-outlined"
+                style="font-variation-settings: 'FILL' 1;"
+            >
+                library_music
+            </span>
+
+            <span>Library</span>
+        </button>
+
+    </nav>
+
+
+    <!-- Three.js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+
+    <!-- JavaScript propio -->
+    <script src="js/app.js"></script>
+
+</body>
+</html>
