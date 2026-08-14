@@ -1,305 +1,297 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AETHER - Now Playing</title>
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-
-    <!-- Material Symbols -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700&display=swap"
-        rel="stylesheet"
-    >
-
-    <!-- Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Inter:wght@400;600;700&display=swap"
-        rel="stylesheet"
-    >
-
-    <!-- Tailwind configuration -->
-    <script>
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AURUM Premium Audio Experience</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
-                    colors: {
-                        primary: "#b1fbff",
-                        "primary-container": "#99eef3",
-                        "on-background": "#c3edf5",
-                        background: "#001114",
-                        surface: "#001114",
-                        "surface-container": "#001d22",
-                        "surface-container-high": "#002429",
-                        "surface-container-highest": "#002a31",
-                        "surface-container-low": "#00161a",
-                        "surface-container-lowest": "#000000",
-                        "on-surface": "#c3edf5",
-                        "on-surface-variant": "#8ab2ba",
-                        secondary: "#c2c1ff",
-                        "secondary-container": "#191471",
-                        tertiary: "#ffeaa3",
-                        error: "#ff716c"
+                    "colors": {
+                        "background": "#131313",
+                        "surface-container-highest": "#353534",
+                        "surface-dim": "#131313",
+                        "on-primary-container": "#705e00",
+                        "on-primary-fixed": "#221b00",
+                        "on-secondary-container": "#b7b5b4",
+                        "primary-fixed-dim": "#e9c400",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "on-tertiary-fixed": "#002022",
+                        "surface-variant": "#353534",
+                        "surface-bright": "#3a3939",
+                        "outline": "#999077",
+                        "on-primary-fixed-variant": "#544600",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-container-low": "#1c1b1b",
+                        "on-tertiary-fixed-variant": "#004f54",
+                        "on-tertiary": "#00363a",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#006a70",
+                        "tertiary-fixed": "#79f5ff",
+                        "on-background": "#e5e2e1",
+                        "secondary-container": "#474746",
+                        "primary": "#fff6df",
+                        "tertiary-fixed-dim": "#00dbe8",
+                        "surface": "#131313",
+                        "on-error": "#690005",
+                        "secondary": "#c8c6c5",
+                        "inverse-primary": "#705d00",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#474746",
+                        "inverse-on-surface": "#313030",
+                        "tertiary": "#defcff",
+                        "surface-container-high": "#2a2a2a",
+                        "secondary-fixed": "#e5e2e1",
+                        "primary-container": "#ffd700",
+                        "on-surface-variant": "#d0c6ab",
+                        "on-secondary": "#313030",
+                        "surface-tint": "#e9c400",
+                        "outline-variant": "#4d4732",
+                        "primary-fixed": "#ffe16d",
+                        "tertiary-container": "#00f1ff",
+                        "on-primary": "#3a3000",
+                        "surface-container": "#201f1f",
+                        "on-surface": "#e5e2e1"
                     },
-
-                    borderRadius: {
-                        DEFAULT: "0.25rem",
-                        lg: "0.5rem",
-                        xl: "0.75rem",
-                        full: "9999px"
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
                     },
-
-                    spacing: {
-                        unit: "8px",
-                        gutter: "16px",
-                        "container-padding-mobile": "20px",
-                        "container-padding-desktop": "48px",
-                        "element-gap": "12px"
+                    "spacing": {
+                        "section-gap": "80px",
+                        "container-padding-desktop": "40px",
+                        "container-padding-mobile": "16px",
+                        "unit": "8px",
+                        "gutter": "24px"
                     },
-
-                    fontFamily: {
-                        body: ["Inter"],
-                        display: ["Inter"],
-                        headline: ["Inter"],
-                        label: ["Geist"],
-                        mono: ["Geist"]
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
                     }
                 }
             }
-        };
+        }
     </script>
-
-    <!-- CSS propio -->
-    <link rel="stylesheet" href="estilos.css">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
-
-<body class="bg-[#0A0A0B] text-on-background min-h-screen font-body relative overflow-hidden flex flex-col items-center">
-
-    <!-- Animation Layer -->
-    <div
-        class="absolute inset-0 w-full h-[530px] md:h-[618px] z-10 flex justify-center items-center pointer-events-none"
-    >
-        <div class="w-full h-full">
-            <div
-                id="threejs-container"
-                class="w-full h-full"
-            ></div>
-
-            <!-- Overlay -->
-            <div
-                class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0A0A0B] to-transparent z-10"
-            ></div>
-        </div>
-    </div>
-
-
-    <!-- Top App Bar -->
-    <header
-        class="fixed top-0 w-full z-50 bg-background/10 backdrop-blur-md flex justify-between items-center px-gutter py-unit"
-    >
-        <button class="text-primary hover:opacity-80 transition-opacity active:scale-95 duration-200">
-            <span
-                class="material-symbols-outlined"
-                style="font-variation-settings: 'FILL' 1;"
-            >
-                settings
-            </span>
-        </button>
-
-        <h1
-            class="font-display text-3xl md:text-5xl tracking-tighter text-primary"
-        >
-            AETHER
-        </h1>
-
-        <button class="text-primary hover:opacity-80 transition-opacity active:scale-95 duration-200">
-            <span class="material-symbols-outlined">
-                account_circle
-            </span>
-        </button>
-    </header>
-
-
-    <!-- Main Content -->
-    <main
-        class="w-full max-w-xl px-container-padding-mobile md:px-container-padding-desktop flex-1 flex flex-col justify-end pb-32 md:pb-48 relative z-30 pointer-events-none"
-    >
-
-        <div
-            class="bg-[#474649]/70 backdrop-blur-[20px] rounded-xl p-6 border-t border-l border-white/10 shadow-[0_0_30px_rgba(0,245,255,0.05)] pointer-events-auto flex flex-col gap-6 w-full"
-        >
-
-            <!-- Metadata -->
-            <div class="flex flex-col items-center text-center gap-1">
-
-                <span
-                    class="font-label text-xs text-primary-container uppercase tracking-widest border border-primary-container/30 px-2 py-0.5 rounded-sm mb-2 inline-block"
-                >
-                    Hi-Res Audio
-                </span>
-
-                <h2 class="text-2xl text-primary tracking-wide">
-                    AETHER
-                </h2>
-
-                <p class="text-base text-on-surface-variant">
-                    OBSIDIAN SONIC
-                </p>
-
-            </div>
-
-
-            <!-- Progress Bar -->
-            <div class="w-full flex flex-col gap-2">
-
-                <div
-                    class="h-1 w-full bg-[#474649] rounded-full overflow-hidden relative cursor-pointer"
-                >
-                    <div
-                        id="progress-bar"
-                        class="h-full bg-primary-container absolute left-0 top-0"
-                    ></div>
-
-                    <div
-                        id="progress-thumb"
-                        class="h-3 w-3 bg-primary-container rounded-full absolute top-1/2 -translate-y-1/2 shadow-[0_0_15px_#00f5ff]"
-                    ></div>
-                </div>
-
-                <div class="flex justify-between w-full px-1">
-
-                    <span class="font-mono text-[10px] text-on-surface-variant">
-                        01:24
-                    </span>
-
-                    <span class="font-mono text-[10px] text-on-surface-variant">
-                        -03:42
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <!-- Controls -->
-            <div class="flex justify-center items-center gap-8 md:gap-12 w-full">
-
-                <button class="player-control text-primary-container">
-                    <span class="material-symbols-outlined">
-                        shuffle
-                    </span>
+<body class="flex h-screen overflow-hidden text-body-md font-body-md antialiased selection:bg-primary-container selection:text-background">
+<!-- Left Panel: SideNavBar -->
+<aside class="bg-background text-primary-container font-body-md text-body-md h-screen w-64 border-r border-outline-variant/20 flex flex-col h-full py-unit z-20 shrink-0">
+<!-- Header -->
+<div class="px-gutter py-8 mb-8">
+<h1 class="text-headline-lg font-headline-lg text-primary-container tracking-tighter">AURUM</h1>
+<p class="text-label-sm font-label-sm text-secondary uppercase tracking-widest mt-1">Elite Audio</p>
+</div>
+<!-- Navigation -->
+<nav class="flex-1 px-unit space-y-2">
+<!-- Active: Inicio -->
+<a class="flex items-center px-4 py-3 text-primary-container font-bold border-r-2 border-primary-container hover:bg-surface-container-highest/10 transition-all duration-300 ease-in-out group" href="#">
+<span class="material-symbols-outlined mr-4 group-hover:text-primary-container transition-colors" data-icon="home">home</span>
+                Inicio
+            </a>
+<a class="flex items-center px-4 py-3 text-secondary hover:text-primary transition-colors hover:bg-surface-container-highest/10 transition-all duration-300 ease-in-out group" href="#">
+<span class="material-symbols-outlined mr-4 group-hover:text-primary transition-colors" data-icon="explore">explore</span>
+                Explorar
+            </a>
+<a class="flex items-center px-4 py-3 text-secondary hover:text-primary transition-colors hover:bg-surface-container-highest/10 transition-all duration-300 ease-in-out group" href="#">
+<span class="material-symbols-outlined mr-4 group-hover:text-primary transition-colors" data-icon="library_music">library_music</span>
+                Biblioteca
+            </a>
+</nav>
+<!-- CTA -->
+<div class="px-gutter py-6">
+<button class="w-full py-3 px-4 bg-transparent border border-primary-container text-primary-container text-label-sm font-label-sm uppercase tracking-wider hover:bg-primary-container hover:text-background transition-colors duration-300 rounded">
+                Nueva Playlist
+            </button>
+</div>
+<!-- Footer / Settings -->
+<div class="px-gutter py-6 border-t border-outline-variant/10 space-y-4">
+<div class="flex items-center mb-6">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center mr-3 luxury-border overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A macro shot of a sleek, dark metallic audio waveform forming a circular avatar shape, illuminated by subtle gold lighting in a minimalist, high-end studio setting. Deep shadows and pristine highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQtspMYoXe8Tg44I1Qq0WPy13o48-5hfEwHJaC2jlb8iuNsjLanYXoEkvc0c0fZl_S24bk7Z_hS_K5icDoaDanv6qAxoZ6fX5OI9v95rBe5UGP5Lcsa4_GQmhHAlwj5AWTlcAYooCj0S1Q9gpHkYBAaVZ4rTw7i26xEe5i1cV3pE3iCPoBvehL5KjZQcxQMuNy9alhM5iyJ8rSJ9cq3l2hwuhAC8eKbL8WCLKRo0Ne6qSWPjn_5WKREA"/>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface">Usuario Premium</p>
+</div>
+</div>
+<a class="flex items-center text-secondary hover:text-primary transition-colors text-label-sm font-label-sm" href="#">
+<span class="material-symbols-outlined text-[18px] mr-3" data-icon="settings">settings</span>
+                Ajustes
+            </a>
+<a class="flex items-center text-secondary hover:text-primary transition-colors text-label-sm font-label-sm" href="#">
+<span class="material-symbols-outlined text-[18px] mr-3" data-icon="logout">logout</span>
+                Cerrar Sesión
+            </a>
+</div>
+</aside>
+<!-- Center Panel: The Focus -->
+<main class="flex-1 flex flex-col relative overflow-hidden bg-[#0a0a0a]">
+<!-- Top Nav Overlay -->
+<header class="absolute top-0 left-0 right-0 bg-background/80 backdrop-blur-md text-primary-container font-label-sm text-label-sm w-full h-16 flex justify-between items-center px-container-padding-desktop z-40">
+<!-- Navigation Links -->
+<nav class="flex space-x-8">
+<a class="text-secondary hover:text-primary-container transition-colors cursor-pointer py-5" href="#">Podcasts</a>
+<a class="text-secondary hover:text-primary-container transition-colors cursor-pointer py-5" href="#">Eventos</a>
+<a class="text-secondary hover:text-primary-container transition-colors cursor-pointer py-5" href="#">Artistas</a>
+</nav>
+<!-- Actions -->
+<div class="flex items-center space-x-6">
+<button class="text-primary-container hover:text-primary-fixed-dim transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="bg-primary-container text-background px-4 py-2 rounded-full font-bold uppercase tracking-wider text-[10px] hover:bg-primary-fixed transition-colors">
+                    Upgrade
                 </button>
-
-                <button class="player-control text-primary-container">
-                    <span class="material-symbols-outlined">
-                        skip_previous
-                    </span>
-                </button>
-
-                <button
-                    id="play-button"
-                    class="w-16 h-16 md:w-20 md:h-20 bg-primary-container rounded-full flex justify-center items-center shadow-[0_0_20px_#00f5ff] hover:shadow-[0_0_30px_#00f5ff] transition-shadow active:scale-95 duration-200"
-                >
-                    <span
-                        id="play-icon"
-                        class="material-symbols-outlined text-[#0A0A0B] text-[36px] md:text-[48px]"
-                        style="font-variation-settings: 'FILL' 1;"
-                    >
-                        play_arrow
-                    </span>
-                </button>
-
-                <button class="player-control text-primary-container">
-                    <span class="material-symbols-outlined">
-                        skip_next
-                    </span>
-                </button>
-
-                <button class="player-control text-primary-container opacity-50">
-                    <span class="material-symbols-outlined">
-                        repeat
-                    </span>
-                </button>
-
-            </div>
-
-
-            <!-- Sensitivity -->
-            <div
-                class="flex items-center gap-3 w-full mt-2 opacity-70 hover:opacity-100 transition-opacity"
-            >
-
-                <span class="material-symbols-outlined text-on-surface-variant text-[16px]">
-                    waves
-                </span>
-
-                <div class="h-[2px] flex-1 bg-[#353436] rounded-full relative">
-
-                    <div
-                        class="h-full w-[70%] bg-on-surface-variant absolute left-0 top-0"
-                    ></div>
-
-                    <div
-                        class="h-2 w-2 bg-on-surface-variant rounded-full absolute top-1/2 -translate-y-1/2"
-                        style="left: 70%;"
-                    ></div>
-
-                </div>
-
-                <span class="font-label text-[10px] text-on-surface-variant w-12 text-right">
-                    FLUID
-                </span>
-
-            </div>
-
-        </div>
-    </main>
-
-
-    <!-- Mobile Navigation -->
-    <nav
-        class="fixed bottom-0 left-0 right-0 mb-8 mx-auto w-fit rounded-full px-6 py-3 bg-surface-container/70 backdrop-blur-xl border-t border-l border-white/10 shadow-[0_0_20px_rgba(0,245,255,0.2)] z-50 flex justify-center items-center gap-8 md:hidden"
-    >
-
-        <button class="nav-button">
-            <span class="material-symbols-outlined">
-                home
-            </span>
-
-            <span>Home</span>
-        </button>
-
-        <button class="nav-button">
-            <span class="material-symbols-outlined">
-                search
-            </span>
-
-            <span>Search</span>
-        </button>
-
-        <button class="nav-button active">
-            <span
-                class="material-symbols-outlined"
-                style="font-variation-settings: 'FILL' 1;"
-            >
-                library_music
-            </span>
-
-            <span>Library</span>
-        </button>
-
-    </nav>
-
-
-    <!-- Three.js -->
-    <script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
-
-    <!-- JavaScript propio -->
-    <script src="js/app.js"></script>
-
-</body>
-</html>
+<div class="flex space-x-4">
+<button class="text-secondary hover:text-primary-container transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-secondary hover:text-primary-container transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Canvas Content -->
+<div class="flex-1 flex flex-col items-center justify-center pt-16 px-gutter max-w-4xl mx-auto w-full relative">
+<!-- Ferromagnetic Fluid Visualizer Container -->
+<div class="w-full relative mb-12 flex justify-center items-center h-[400px]">
+<!-- The capsule container -->
+<div class="w-full h-full relative rounded-[100px] overflow-hidden luxury-border bg-[#111111] shadow-[0_0_50px_rgba(255,215,0,0.05)]">
+<div class="absolute inset-0 w-full h-full pointer-events-none" id="threejs-container"></div>
+<!-- Inner glow/shadow for depth -->
+<div class="absolute inset-0 rounded-[100px] shadow-[inset_0_0_50px_rgba(0,0,0,0.8)] pointer-events-none"></div>
+</div>
+<!-- Subtle glow behind the visualizer to anchor it -->
+<div class="absolute inset-0 bg-primary-container/5 blur-[100px] -z-10 rounded-full scale-75 pointer-events-none"></div>
+</div>
+<script src="java.js"></script>
+<!-- Music Player -->
+<div class="w-full max-w-2xl luxury-surface p-8 rounded-2xl luxury-border backdrop-blur-md relative overflow-hidden">
+<!-- Decorative background elements -->
+<div class="absolute -top-24 -right-24 w-48 h-48 bg-primary-container/5 rounded-full blur-[40px] pointer-events-none"></div>
+<div class="flex flex-col items-center text-center">
+<h2 class="text-headline-lg font-headline-lg text-primary-container mb-2">Golden Echoes</h2>
+<p class="text-secondary text-lg tracking-wide mb-8 font-light">The Midnight</p>
+<!-- Progress Bar -->
+<div class="w-full mb-8">
+<div class="flex justify-between text-label-sm font-label-sm text-secondary mb-2">
+<span>01:42</span>
+<span>04:15</span>
+</div>
+<div class="h-1 bg-surface-container-highest rounded-full overflow-hidden relative cursor-pointer group">
+<div class="absolute top-0 left-0 h-full bg-primary-container w-1/3 group-hover:bg-primary transition-colors"></div>
+<!-- Scrubber Thumb -->
+<div class="absolute top-1/2 -translate-y-1/2 left-1/3 w-3 h-3 bg-primary-container rounded-full shadow-[0_0_10px_rgba(255,215,0,0.5)] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+</div>
+<!-- Controls -->
+<div class="flex items-center justify-center space-x-10">
+<button class="text-secondary hover:text-primary-container transition-colors p-2 rounded-full hover:bg-surface-container-highest/20">
+<span class="material-symbols-outlined text-2xl" data-icon="shuffle">shuffle</span>
+</button>
+<button class="text-primary-container hover:text-primary transition-colors p-2 rounded-full hover:bg-primary-container/10">
+<span class="material-symbols-outlined fill text-4xl" data-icon="skip_previous">skip_previous</span>
+</button>
+<button class="w-20 h-20 rounded-full bg-primary-container text-background flex items-center justify-center hover:scale-105 transition-transform shadow-[0_0_30px_rgba(255,215,0,0.15)] hover:shadow-[0_0_40px_rgba(255,215,0,0.25)]">
+<span class="material-symbols-outlined fill text-5xl ml-1" data-icon="play_arrow">play_arrow</span>
+</button>
+<button class="text-primary-container hover:text-primary transition-colors p-2 rounded-full hover:bg-primary-container/10">
+<span class="material-symbols-outlined fill text-4xl" data-icon="skip_next">skip_next</span>
+</button>
+<button class="text-secondary hover:text-primary-container transition-colors p-2 rounded-full hover:bg-surface-container-highest/20">
+<span class="material-symbols-outlined text-2xl" data-icon="repeat">repeat</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Right Panel: Up Next -->
+<aside class="w-80 border-l luxury-border bg-[#111111] h-screen flex flex-col z-20 shrink-0">
+<div class="p-6 border-b luxury-border">
+<h3 class="text-primary-container font-label-sm text-label-sm uppercase tracking-widest font-bold">Siguiente</h3>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-4">
+<!-- Track 1 -->
+<div class="flex items-center p-3 rounded-lg hover:bg-surface-container-highest/30 transition-colors cursor-pointer group">
+<div class="w-14 h-14 bg-surface-container-highest rounded luxury-border overflow-hidden mr-4 relative flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Dark, moody album cover art featuring abstract geometric shapes in deep blues and blacks with a single, striking horizontal gold line slicing through the center. Minimalist and premium." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXKX2jctA-WPTEv1kPwzn4uwTotkzTGVGouXFdib_VH_R4YDIGNxHPLWj3VZKz_ACwVuyusELiL3jOQNlBHde6Su11OnlY9YKkxmZj2vQfmNAbqNKOWDCYK7-PctBb40PhUTM8fNBacb6tiIqjMCMRU3Apy32ug_3NIlWGJc0bwZJuP-TKTceMSCAP01N37BhEfmveWVjdaPpGjuJ5w9IrEYWfzTUQbQiDXp3lZRAHZk4MIoR4TSFUCg"/>
+<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container fill" data-icon="play_arrow">play_arrow</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-on-surface font-medium truncate text-sm">Neon Nights</p>
+<p class="text-secondary text-xs truncate mt-1">Gunship</p>
+</div>
+<span class="text-secondary text-xs">03:45</span>
+</div>
+<!-- Track 2 -->
+<div class="flex items-center p-3 rounded-lg hover:bg-surface-container-highest/30 transition-colors cursor-pointer group">
+<div class="w-14 h-14 bg-surface-container-highest rounded luxury-border overflow-hidden mr-4 relative flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="High contrast macro photography of dark brushed metal textures with a soft, out-of-focus golden light source in the background. Evokes a sense of deep, resonant bass and premium sound quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSJxZz3xpV3dWxttejOasubPlitwOdltWKQVazAu3dKwrVJOuCNITn5b42x4EZMqFIBAv-XcTd3K7Du7QzZoQpgtEHqjuu_gJYNQ0cwmz-5FiyOnUu45vZtn-8HmEw1anAVVbJ2ayiIJbVGItePJSXxkZxKaL62OJPgJBFheH0_YIHArSnZBPp8Qf7kskwyqS0L9AyKbVk4yyIWBOFm61AIyTiT6VxQPRl9EtY_Rl7e-mi1uviCSO4Og"/>
+<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container fill" data-icon="play_arrow">play_arrow</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-on-surface font-medium truncate text-sm">Resonance</p>
+<p class="text-secondary text-xs truncate mt-1">HOME</p>
+</div>
+<span class="text-secondary text-xs">04:12</span>
+</div>
+<!-- Track 3 -->
+<div class="flex items-center p-3 rounded-lg hover:bg-surface-container-highest/30 transition-colors cursor-pointer group">
+<div class="w-14 h-14 bg-surface-container-highest rounded luxury-border overflow-hidden mr-4 relative flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A minimalist digital illustration of a sleek vinyl record emerging from deep shadows, with a subtle golden reflection on its grooves. Dark, high-end aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoILJm4LoGitAllKKjz98gXoQdzbcHBAnP1oVSpbt6s45xagpypTsZ1AbV9ESftZd2LpyLYuNp_vivIEVdKCSb3dkIbQtCRG7JQVsoiOZOZarvRMDsEjp9yc6xKMU-HIfM1yIh5aexrg5cbIxFbCcsWxuavHw-RFJHAB7vLGRxF9_IakVh2NVZ3-BzGV7yP1MnFK66Y66XZGraI-GRgNN_uArgRoEeC4oqhdNjyWe4hFkkbshXWb9gDg"/>
+<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container fill" data-icon="play_arrow">play_arrow</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-on-surface font-medium truncate text-sm">Nightcall</p>
+<p class="text-secondary text-xs truncate mt-1">Kavinsky</p>
+</div>
+<span class="text-secondary text-xs">05:03</span>
+</div>
+<!-- Track 4 -->
+<div class="flex items-center p-3 rounded-lg hover:bg-surface-container-highest/30 transition-colors cursor-pointer group">
+<div class="w-14 h-14 bg-surface-container-highest rounded luxury-border overflow-hidden mr-4 relative flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A sleek, modern architectural interior shot rendered in near-black with sharp, dramatic lighting highlighting a single golden acoustic panel. Premium audio environment concept." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQzFMPA-_MHbmYUZbF08rxdFNMG3n87QEFCt6pIOaQI22Eke1A61fEnfnxYGeveywQsil6c8KCSY--TU4XjvVJ-uBA0kYWtC-JTOsFdc_WgRTLiUbViNnaZ4oiY69wiSNWLh9X5PPgTWdQqXpu_I2YsAME-caSNpxlamCaSEY2Wu4sPM27-kcdMnhoTzvsRpaAEQXHphmNZ6-2XiKjExP6zNm4kE0z7vW1F1eRFuxULZrISn7HsQZ9Og"/>
+<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container fill" data-icon="play_arrow">play_arrow</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-on-surface font-medium truncate text-sm">Venger</p>
+<p class="text-secondary text-xs truncate mt-1">Kavinsky</p>
+</div>
+<span class="text-secondary text-xs">05:03</span>
+</div>
+</div>
+</aside>
+<script src="java.js"></script>
+</body></html>
