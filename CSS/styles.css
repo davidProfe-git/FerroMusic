@@ -1,0 +1,232 @@
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+body {
+    background-color: theme('colors.background');
+    background-image:
+        radial-gradient(circle at 50% 50%, rgba(27, 28, 28, 0.4) 0%, rgba(10, 10, 11, 0.9) 100%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    color: theme('colors.on-background');
+    font-family: 'Geist', sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* Skeuomorphic Base Styles - Darker and heavier */
+.metal-chassis {
+    background: linear-gradient(135deg, #2a2a2b, #131314);
+    box-shadow:
+        inset 0 2px 2px rgba(255, 255, 255, 0.05),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.8),
+        0 8px 24px rgba(0, 0, 0, 0.9);
+    border: 2px solid #0e0e0e;
+    position: relative;
+}
+
+.inset-panel {
+    background: #080808;
+    box-shadow:
+        inset 0 8px 16px rgba(0, 0, 0, 1),
+        inset 0 2px 4px rgba(0, 0, 0, 0.8),
+        0 1px 0 rgba(255, 255, 255, 0.1);
+    border: 1px solid #000;
+}
+
+.engraved-plate {
+    background: linear-gradient(180deg, #1f1f20, #131314);
+    border: 1px solid #353436;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05), 0 2px 4px rgba(0, 0, 0, 0.6);
+    border-radius: 4px;
+}
+
+.brushed-metal {
+    background-image:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, transparent 50%, rgba(0, 0, 0, 0.2) 100%),
+        repeating-linear-gradient(90deg,
+            transparent,
+            transparent 1px,
+            rgba(255, 255, 255, 0.01) 1px,
+            rgba(255, 255, 255, 0.01) 2px),
+        repeating-linear-gradient(0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.1) 2px,
+            rgba(0, 0, 0, 0.1) 4px);
+}
+
+.rivet {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #4a4a4b, #131314);
+    box-shadow:
+        inset 0 1px 2px rgba(255, 255, 255, 0.2),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.8),
+        0 2px 4px rgba(0, 0, 0, 0.8);
+    position: absolute;
+    border: 1px solid #0a0a0b;
+}
+
+.rivet::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 8px;
+    height: 2px;
+    background: #0a0a0b;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.rivet-tl {
+    top: theme('spacing.rivet-offset');
+    left: theme('spacing.rivet-offset');
+}
+
+.rivet-tr {
+    top: theme('spacing.rivet-offset');
+    right: theme('spacing.rivet-offset');
+}
+
+.rivet-bl {
+    bottom: theme('spacing.rivet-offset');
+    left: theme('spacing.rivet-offset');
+}
+
+.rivet-br {
+    bottom: theme('spacing.rivet-offset');
+    right: theme('spacing.rivet-offset');
+}
+
+/* Specific Components */
+.magnetic-glow {
+    box-shadow: 0 0 20px theme('colors.electric-cyan');
+    text-shadow: 0 0 10px theme('colors.electric-cyan');
+}
+
+.amber-led {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: theme('colors.amber-filament');
+    box-shadow: 0 0 12px theme('colors.amber-filament'), inset 0 0 4px rgba(255, 255, 255, 0.8);
+    animation: flicker 4s infinite alternate;
+}
+
+@keyframes flicker {
+
+    0%,
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 12px theme('colors.amber-filament');
+    }
+
+    95% {
+        opacity: 0.8;
+        box-shadow: 0 0 8px theme('colors.amber-filament');
+    }
+
+    98% {
+        opacity: 0.4;
+        box-shadow: 0 0 4px theme('colors.amber-filament');
+    }
+}
+
+.relay-button {
+    background: radial-gradient(circle at 50% 50%, #2a2a2b, #131314);
+    border-radius: 50%;
+    box-shadow:
+        inset 0 2px 4px rgba(255, 255, 255, 0.1),
+        inset 0 -2px 6px rgba(0, 0, 0, 0.8),
+        0 6px 12px rgba(0, 0, 0, 0.9),
+        0 0 0 4px #0e0e0e;
+    border: 2px solid #444846;
+    transition: all 0.1s ease;
+    position: relative;
+}
+
+.relay-button:active {
+    transform: translateY(4px);
+    box-shadow:
+        inset 0 4px 8px rgba(0, 0, 0, 0.8),
+        0 2px 4px rgba(0, 0, 0, 0.9),
+        0 0 0 4px #0e0e0e;
+}
+
+.copper-ring {
+    border: 6px solid #8B4513;
+    /* Darker copper */
+    background: linear-gradient(135deg, #a0522d, #5c2e0e);
+    box-shadow:
+        inset 0 0 20px rgba(0, 0, 0, 0.9),
+        0 0 30px rgba(0, 219, 231, 0.2),
+        0 4px 10px rgba(0, 0, 0, 0.8);
+    position: relative;
+}
+
+.copper-coil-wrap {
+    position: absolute;
+    inset: -12px;
+    border-radius: 50%;
+    background: repeating-conic-gradient(from 0deg,
+            #b87333 0deg 5deg,
+            #8a5626 5deg 10deg,
+            #5c3a1a 10deg 15deg);
+    -webkit-mask: radial-gradient(transparent 65%, black 66%, black 100%);
+    mask: radial-gradient(transparent 65%, black 66%, black 100%);
+    opacity: 0.8;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 1);
+}
+
+.filing-track {
+    background-color: #080808;
+    box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.05);
+    border: 1px solid #1a1a1a;
+}
+
+.analog-meter {
+    background: #0a0a0a;
+    border-radius: 4px;
+    box-shadow: inset 0 4px 12px rgba(0, 0, 0, 1);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #2a2a2b;
+}
+
+.meter-scale {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    right: 10%;
+    height: 60%;
+    border-top: 1px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+.needle {
+    position: absolute;
+    bottom: -10%;
+    left: 50%;
+    width: 2px;
+    height: 90%;
+    background: theme('colors.amber-filament');
+    transform-origin: bottom center;
+    transform: rotate(-30deg);
+    transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 4px theme('colors.amber-filament');
+    z-index: 10;
+}
+
+.needle::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -4px;
+    width: 10px;
+    height: 10px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 50%;
+}
