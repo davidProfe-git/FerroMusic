@@ -1,305 +1,115 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>AETHER - Now Playing</title>
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-
-    <!-- Material Symbols -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700&display=swap"
-        rel="stylesheet"
-    >
-
-    <!-- Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Inter:wght@400;600;700&display=swap"
-        rel="stylesheet"
-    >
-
-    <!-- Tailwind configuration -->
-    <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        primary: "#b1fbff",
-                        "primary-container": "#99eef3",
-                        "on-background": "#c3edf5",
-                        background: "#001114",
-                        surface: "#001114",
-                        "surface-container": "#001d22",
-                        "surface-container-high": "#002429",
-                        "surface-container-highest": "#002a31",
-                        "surface-container-low": "#00161a",
-                        "surface-container-lowest": "#000000",
-                        "on-surface": "#c3edf5",
-                        "on-surface-variant": "#8ab2ba",
-                        secondary: "#c2c1ff",
-                        "secondary-container": "#191471",
-                        tertiary: "#ffeaa3",
-                        error: "#ff716c"
-                    },
-
-                    borderRadius: {
-                        DEFAULT: "0.25rem",
-                        lg: "0.5rem",
-                        xl: "0.75rem",
-                        full: "9999px"
-                    },
-
-                    spacing: {
-                        unit: "8px",
-                        gutter: "16px",
-                        "container-padding-mobile": "20px",
-                        "container-padding-desktop": "48px",
-                        "element-gap": "12px"
-                    },
-
-                    fontFamily: {
-                        body: ["Inter"],
-                        display: ["Inter"],
-                        headline: ["Inter"],
-                        label: ["Geist"],
-                        mono: ["Geist"]
-                    }
-                }
-            }
-        };
-    </script>
-
-    <!-- CSS propio -->
-    <link rel="stylesheet" href="estilos.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0b0c" />
+  <title>FERRO-PLAYER | Music Experience</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand-block">
+        <div class="brand">FERRO-PLAYER</div>
+        <div class="avatar">FP</div>
+        <div class="master-title">MAESTRO DE LA FIESTA</div>
+        <div class="level"><span style="width:75%"></span></div>
+        <button class="pro-btn" id="proBtn">UPGRADE TO PRO</button>
+      </div>
+      <nav class="side-nav">
+        <button class="nav-item active" data-view="home"><span>⌂</span> HOME</button>
+        <button class="nav-item" data-view="library"><span>♫</span> LIBRARY</button>
+        <button class="nav-item" data-view="charts"><span>◈</span> LEADERBOARD</button>
+        <button class="nav-item" data-view="settings"><span>⚙</span> FLUID SETTINGS</button>
+        <button class="nav-item" data-view="profile"><span>◉</span> PROFILE</button>
+      </nav>
+      <div class="side-footer">
+        <button class="nav-item" id="supportBtn"><span>?</span> SUPPORT</button>
+        <button class="nav-item" id="logoutBtn"><span>↪</span> LOGOUT</button>
+      </div>
+    </aside>
 
-<body class="bg-[#0A0A0B] text-on-background min-h-screen font-body relative overflow-hidden flex flex-col items-center">
-
-    <!-- Animation Layer -->
-    <div
-        class="absolute inset-0 w-full h-[530px] md:h-[618px] z-10 flex justify-center items-center pointer-events-none"
-    >
-        <div class="w-full h-full">
-            <div
-                id="threejs-container"
-                class="w-full h-full"
-            ></div>
-
-            <!-- Overlay -->
-            <div
-                class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0A0A0B] to-transparent z-10"
-            ></div>
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu">☰</button>
+        <nav class="top-links">
+          <button data-view="home">DISCOVER</button>
+          <button data-view="charts">CHARTS</button>
+          <button data-view="library">COMMUNITY</button>
+        </nav>
+        <div class="top-actions">
+          <label class="search"><span>⌕</span><input id="searchInput" placeholder="Search..." /></label>
+          <button title="Notificaciones" id="notifyBtn">♢</button>
+          <button title="Ajustes" data-view="settings">⚙</button>
         </div>
-    </div>
+      </header>
 
-
-    <!-- Top App Bar -->
-    <header
-        class="fixed top-0 w-full z-50 bg-background/10 backdrop-blur-md flex justify-between items-center px-gutter py-unit"
-    >
-        <button class="text-primary hover:opacity-80 transition-opacity active:scale-95 duration-200">
-            <span
-                class="material-symbols-outlined"
-                style="font-variation-settings: 'FILL' 1;"
-            >
-                settings
-            </span>
-        </button>
-
-        <h1
-            class="font-display text-3xl md:text-5xl tracking-tighter text-primary"
-        >
-            AETHER
-        </h1>
-
-        <button class="text-primary hover:opacity-80 transition-opacity active:scale-95 duration-200">
-            <span class="material-symbols-outlined">
-                account_circle
-            </span>
-        </button>
-    </header>
-
-
-    <!-- Main Content -->
-    <main
-        class="w-full max-w-xl px-container-padding-mobile md:px-container-padding-desktop flex-1 flex flex-col justify-end pb-32 md:pb-48 relative z-30 pointer-events-none"
-    >
-
-        <div
-            class="bg-[#474649]/70 backdrop-blur-[20px] rounded-xl p-6 border-t border-l border-white/10 shadow-[0_0_30px_rgba(0,245,255,0.05)] pointer-events-auto flex flex-col gap-6 w-full"
-        >
-
-            <!-- Metadata -->
-            <div class="flex flex-col items-center text-center gap-1">
-
-                <span
-                    class="font-label text-xs text-primary-container uppercase tracking-widest border border-primary-container/30 px-2 py-0.5 rounded-sm mb-2 inline-block"
-                >
-                    Hi-Res Audio
-                </span>
-
-                <h2 class="text-2xl text-primary tracking-wide">
-                    AETHER
-                </h2>
-
-                <p class="text-base text-on-surface-variant">
-                    OBSIDIAN SONIC
-                </p>
-
+      <section class="content" id="content">
+        <div class="dashboard-grid">
+          <section class="visual-column">
+            <div class="visualizer-card">
+              <canvas id="visualizer" width="700" height="700"></canvas>
+              <div class="visual-core"><div class="core-ring"></div><span>FERRO</span></div>
             </div>
-
-
-            <!-- Progress Bar -->
-            <div class="w-full flex flex-col gap-2">
-
-                <div
-                    class="h-1 w-full bg-[#474649] rounded-full overflow-hidden relative cursor-pointer"
-                >
-                    <div
-                        id="progress-bar"
-                        class="h-full bg-primary-container absolute left-0 top-0"
-                    ></div>
-
-                    <div
-                        id="progress-thumb"
-                        class="h-3 w-3 bg-primary-container rounded-full absolute top-1/2 -translate-y-1/2 shadow-[0_0_15px_#00f5ff]"
-                    ></div>
-                </div>
-
-                <div class="flex justify-between w-full px-1">
-
-                    <span class="font-mono text-[10px] text-on-surface-variant">
-                        01:24
-                    </span>
-
-                    <span class="font-mono text-[10px] text-on-surface-variant">
-                        -03:42
-                    </span>
-
-                </div>
-
+            <div class="info-card">
+              <h2>Visualizador Reactivo</h2>
+              <p>Movimiento agresivo con graves potentes, suave con melodías ligeras.</p>
             </div>
-
-
-            <!-- Controls -->
-            <div class="flex justify-center items-center gap-8 md:gap-12 w-full">
-
-                <button class="player-control text-primary-container">
-                    <span class="material-symbols-outlined">
-                        shuffle
-                    </span>
-                </button>
-
-                <button class="player-control text-primary-container">
-                    <span class="material-symbols-outlined">
-                        skip_previous
-                    </span>
-                </button>
-
-                <button
-                    id="play-button"
-                    class="w-16 h-16 md:w-20 md:h-20 bg-primary-container rounded-full flex justify-center items-center shadow-[0_0_20px_#00f5ff] hover:shadow-[0_0_30px_#00f5ff] transition-shadow active:scale-95 duration-200"
-                >
-                    <span
-                        id="play-icon"
-                        class="material-symbols-outlined text-[#0A0A0B] text-[36px] md:text-[48px]"
-                        style="font-variation-settings: 'FILL' 1;"
-                    >
-                        play_arrow
-                    </span>
-                </button>
-
-                <button class="player-control text-primary-container">
-                    <span class="material-symbols-outlined">
-                        skip_next
-                    </span>
-                </button>
-
-                <button class="player-control text-primary-container opacity-50">
-                    <span class="material-symbols-outlined">
-                        repeat
-                    </span>
-                </button>
-
+            <div class="settings-card">
+              <div class="card-heading"><span>⌁</span><h3>FLUID SETTINGS</h3></div>
+              <div class="slider-row"><div><span>MAGNITUD DE IMÁN</span><b id="magValue">75%</b></div><input id="magSlider" type="range" min="1" max="100" value="75"></div>
+              <div class="slider-row"><div><span>SENSIBILIDAD</span><b id="sensValue">90%</b></div><input id="sensSlider" type="range" min="1" max="100" value="90"></div>
+              <div class="slider-row"><div><span>VISCOSIDAD</span><b id="viscValue">30%</b></div><input id="viscSlider" type="range" min="1" max="100" value="30"></div>
             </div>
+          </section>
 
-
-            <!-- Sensitivity -->
-            <div
-                class="flex items-center gap-3 w-full mt-2 opacity-70 hover:opacity-100 transition-opacity"
-            >
-
-                <span class="material-symbols-outlined text-on-surface-variant text-[16px]">
-                    waves
-                </span>
-
-                <div class="h-[2px] flex-1 bg-[#353436] rounded-full relative">
-
-                    <div
-                        class="h-full w-[70%] bg-on-surface-variant absolute left-0 top-0"
-                    ></div>
-
-                    <div
-                        class="h-2 w-2 bg-on-surface-variant rounded-full absolute top-1/2 -translate-y-1/2"
-                        style="left: 70%;"
-                    ></div>
-
-                </div>
-
-                <span class="font-label text-[10px] text-on-surface-variant w-12 text-right">
-                    FLUID
-                </span>
-
+          <aside class="right-column">
+            <div class="panel hits-panel">
+              <div class="panel-title"><span>♛</span><h2>Éxitos del Momento</h2></div>
+              <div id="trackList"></div>
+              <div class="recommend-title">RECOMENDACIONES PARA TI</div>
+              <div class="recommendations">
+                <button class="cover cover-one" data-track="Void Walker"><span>VOID WALKER</span></button>
+                <button class="cover cover-two" data-track="Dark Matter"><span>DARK MATTER</span></button>
+              </div>
             </div>
-
+          </aside>
         </div>
+
+        <section class="library-view view hidden" id="libraryView">
+          <div class="view-header"><div><span class="eyebrow">YOUR COLLECTION</span><h1>Library</h1></div><label class="upload-btn">＋ ADD MUSIC<input id="fileInput" type="file" accept="audio/*" multiple></label></div>
+          <div class="library-grid" id="libraryGrid"></div>
+        </section>
+
+        <section class="view hidden" id="chartsView">
+          <div class="view-header"><div><span class="eyebrow">LIVE DATA</span><h1>Leaderboard</h1></div></div>
+          <div class="chart-table" id="chartTable"></div>
+        </section>
+
+        <section class="view hidden" id="settingsView">
+          <div class="view-header"><div><span class="eyebrow">CONTROL ROOM</span><h1>Fluid Settings</h1></div></div>
+          <div class="settings-big panel"><p>Configura la respuesta visual del ferrofluido en tiempo real.</p><div class="toggle-row"><span>Reactive Visualizer</span><button class="toggle on" id="visualToggle"></button></div><div class="toggle-row"><span>Auto Theme</span><button class="toggle" id="themeToggle"></button></div><div class="toggle-row"><span>Particles</span><button class="toggle on" id="particleToggle"></button></div></div>
+        </section>
+
+        <section class="view hidden" id="profileView">
+          <div class="view-header"><div><span class="eyebrow">IDENTITY</span><h1>Profile</h1></div></div>
+          <div class="profile-card panel"><div class="avatar big">FP</div><div><h2>Maestro de la Fiesta</h2><p>Level 75 · Ferro Explorer</p></div><button class="ghost-btn" id="editProfile">EDIT PROFILE</button></div>
+        </section>
+      </section>
     </main>
 
-
-    <!-- Mobile Navigation -->
-    <nav
-        class="fixed bottom-0 left-0 right-0 mb-8 mx-auto w-fit rounded-full px-6 py-3 bg-surface-container/70 backdrop-blur-xl border-t border-l border-white/10 shadow-[0_0_20px_rgba(0,245,255,0.2)] z-50 flex justify-center items-center gap-8 md:hidden"
-    >
-
-        <button class="nav-button">
-            <span class="material-symbols-outlined">
-                home
-            </span>
-
-            <span>Home</span>
-        </button>
-
-        <button class="nav-button">
-            <span class="material-symbols-outlined">
-                search
-            </span>
-
-            <span>Search</span>
-        </button>
-
-        <button class="nav-button active">
-            <span
-                class="material-symbols-outlined"
-                style="font-variation-settings: 'FILL' 1;"
-            >
-                library_music
-            </span>
-
-            <span>Library</span>
-        </button>
-
-    </nav>
-
-
-    <!-- Three.js -->
-    <script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
-
-    <!-- JavaScript propio -->
-    <script src="js/app.js"></script>
-
+    <footer class="player-bar">
+      <div class="track-info"><div class="mini-cover" id="miniCover">FP</div><div><strong id="nowTitle">Magnetic Pulse</strong><span id="nowArtist">Flux Master</span></div><button id="favoriteBtn" class="icon-btn">♡</button></div>
+      <div class="player-center">
+        <div class="controls"><button id="shuffleBtn">⤨</button><button id="prevBtn">|◀</button><button id="playBtn" class="play">▶</button><button id="nextBtn">▶|</button><button id="repeatBtn">↻</button></div>
+        <div class="timeline"><span id="currentTime">0:00</span><input id="progress" type="range" min="0" max="100" value="0"><span id="duration">0:00</span></div>
+      </div>
+      <div class="player-extra"><button id="micBtn">♩</button><button id="queueBtn">☷</button><span>🔊</span><input id="volume" type="range" min="0" max="100" value="80"></div>
+    </footer>
+    <div class="toast" id="toast"></div>
+  </div>
+  <audio id="audio"></audio>
+  <script src="app.js"></script>
 </body>
 </html>
