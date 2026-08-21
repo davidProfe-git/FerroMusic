@@ -1,115 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0a0b0c" />
-  <title>FERRO-PLAYER | Music Experience</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="app-shell">
-    <aside class="sidebar" id="sidebar">
-      <div class="brand-block">
-        <div class="brand">FERRO-PLAYER</div>
-        <div class="avatar">FP</div>
-        <div class="master-title">MAESTRO DE LA FIESTA</div>
-        <div class="level"><span style="width:75%"></span></div>
-        <button class="pro-btn" id="proBtn">UPGRADE TO PRO</button>
-      </div>
-      <nav class="side-nav">
-        <button class="nav-item active" data-view="home"><span>⌂</span> HOME</button>
-        <button class="nav-item" data-view="library"><span>♫</span> LIBRARY</button>
-        <button class="nav-item" data-view="charts"><span>◈</span> LEADERBOARD</button>
-        <button class="nav-item" data-view="settings"><span>⚙</span> FLUID SETTINGS</button>
-        <button class="nav-item" data-view="profile"><span>◉</span> PROFILE</button>
-      </nav>
-      <div class="side-footer">
-        <button class="nav-item" id="supportBtn"><span>?</span> SUPPORT</button>
-        <button class="nav-item" id="logoutBtn"><span>↪</span> LOGOUT</button>
-      </div>
-    </aside>
-
-    <main class="main">
-      <header class="topbar">
-        <button class="mobile-menu" id="mobileMenu">☰</button>
-        <nav class="top-links">
-          <button data-view="home">DISCOVER</button>
-          <button data-view="charts">CHARTS</button>
-          <button data-view="library">COMMUNITY</button>
-        </nav>
-        <div class="top-actions">
-          <label class="search"><span>⌕</span><input id="searchInput" placeholder="Search..." /></label>
-          <button title="Notificaciones" id="notifyBtn">♢</button>
-          <button title="Ajustes" data-view="settings">⚙</button>
-        </div>
-      </header>
-
-      <section class="content" id="content">
-        <div class="dashboard-grid">
-          <section class="visual-column">
-            <div class="visualizer-card">
-              <canvas id="visualizer" width="700" height="700"></canvas>
-              <div class="visual-core"><div class="core-ring"></div><span>FERRO</span></div>
-            </div>
-            <div class="info-card">
-              <h2>Visualizador Reactivo</h2>
-              <p>Movimiento agresivo con graves potentes, suave con melodías ligeras.</p>
-            </div>
-            <div class="settings-card">
-              <div class="card-heading"><span>⌁</span><h3>FLUID SETTINGS</h3></div>
-              <div class="slider-row"><div><span>MAGNITUD DE IMÁN</span><b id="magValue">75%</b></div><input id="magSlider" type="range" min="1" max="100" value="75"></div>
-              <div class="slider-row"><div><span>SENSIBILIDAD</span><b id="sensValue">90%</b></div><input id="sensSlider" type="range" min="1" max="100" value="90"></div>
-              <div class="slider-row"><div><span>VISCOSIDAD</span><b id="viscValue">30%</b></div><input id="viscSlider" type="range" min="1" max="100" value="30"></div>
-            </div>
-          </section>
-
-          <aside class="right-column">
-            <div class="panel hits-panel">
-              <div class="panel-title"><span>♛</span><h2>Éxitos del Momento</h2></div>
-              <div id="trackList"></div>
-              <div class="recommend-title">RECOMENDACIONES PARA TI</div>
-              <div class="recommendations">
-                <button class="cover cover-one" data-track="Void Walker"><span>VOID WALKER</span></button>
-                <button class="cover cover-two" data-track="Dark Matter"><span>DARK MATTER</span></button>
-              </div>
-            </div>
-          </aside>
-        </div>
-
-        <section class="library-view view hidden" id="libraryView">
-          <div class="view-header"><div><span class="eyebrow">YOUR COLLECTION</span><h1>Library</h1></div><label class="upload-btn">＋ ADD MUSIC<input id="fileInput" type="file" accept="audio/*" multiple></label></div>
-          <div class="library-grid" id="libraryGrid"></div>
-        </section>
-
-        <section class="view hidden" id="chartsView">
-          <div class="view-header"><div><span class="eyebrow">LIVE DATA</span><h1>Leaderboard</h1></div></div>
-          <div class="chart-table" id="chartTable"></div>
-        </section>
-
-        <section class="view hidden" id="settingsView">
-          <div class="view-header"><div><span class="eyebrow">CONTROL ROOM</span><h1>Fluid Settings</h1></div></div>
-          <div class="settings-big panel"><p>Configura la respuesta visual del ferrofluido en tiempo real.</p><div class="toggle-row"><span>Reactive Visualizer</span><button class="toggle on" id="visualToggle"></button></div><div class="toggle-row"><span>Auto Theme</span><button class="toggle" id="themeToggle"></button></div><div class="toggle-row"><span>Particles</span><button class="toggle on" id="particleToggle"></button></div></div>
-        </section>
-
-        <section class="view hidden" id="profileView">
-          <div class="view-header"><div><span class="eyebrow">IDENTITY</span><h1>Profile</h1></div></div>
-          <div class="profile-card panel"><div class="avatar big">FP</div><div><h2>Maestro de la Fiesta</h2><p>Level 75 · Ferro Explorer</p></div><button class="ghost-btn" id="editProfile">EDIT PROFILE</button></div>
-        </section>
-      </section>
-    </main>
-
-    <footer class="player-bar">
-      <div class="track-info"><div class="mini-cover" id="miniCover">FP</div><div><strong id="nowTitle">Magnetic Pulse</strong><span id="nowArtist">Flux Master</span></div><button id="favoriteBtn" class="icon-btn">♡</button></div>
-      <div class="player-center">
-        <div class="controls"><button id="shuffleBtn">⤨</button><button id="prevBtn">|◀</button><button id="playBtn" class="play">▶</button><button id="nextBtn">▶|</button><button id="repeatBtn">↻</button></div>
-        <div class="timeline"><span id="currentTime">0:00</span><input id="progress" type="range" min="0" max="100" value="0"><span id="duration">0:00</span></div>
-      </div>
-      <div class="player-extra"><button id="micBtn">♩</button><button id="queueBtn">☷</button><span>🔊</span><input id="volume" type="range" min="0" max="100" value="80"></div>
-    </footer>
-    <div class="toast" id="toast"></div>
-  </div>
-  <audio id="audio"></audio>
-  <script src="app.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#070908" />
+    <meta name="description" content="FERRO — una pequeña criatura digital que vive dentro de tu reproductor de música." />
+    <title>FERRO — Music Experience</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
